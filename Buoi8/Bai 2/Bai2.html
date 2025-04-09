@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tìm số lớn nhất và nhỏ nhất</title>
+</head>
+<body>
+  <h2>Nhập vào một dãy số</h2>
+  <input type="text" id="daySo" placeholder="Ví dụ: 3,5,1,9,2">
+  <button onclick="timMaxMin()">Tìm số lớn nhất và nhỏ nhất</button>
+
+  <p id="ketQua"></p>
+
+  <script>
+    function timMaxMin() {
+      var input = document.getElementById("daySo").value;
+      var mangSo = input.split(',').map(function(item) {
+        return parseFloat(item.trim());
+      });
+
+      if (mangSo.length === 0 || mangSo.some(isNaN)) {
+        document.getElementById("ketQua").innerText = "Vui lòng nhập đúng định dạng dãy số!";
+        return;
+      }
+
+      var soLonNhat = Math.max(...mangSo);
+      var soNhoNhat = Math.min(...mangSo);
+
+      document.getElementById("ketQua").innerText =
+        "Số lớn nhất là: " + soLonNhat + "\nSố nhỏ nhất là: " + soNhoNhat;
+    }
+  </script>
+</body>
+</html>
